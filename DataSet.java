@@ -32,17 +32,25 @@ public class DataSet {
     }
 
     public double getMode() {
-        //make arraylist counts
-        int c = 0;
+        int count = 0;
+        int maxCount = 0;
+        double mode = 0;
         for (int i = 0; i < data.size(); i++) {
-            for(int j = i; j < data.size(); j++) {
+            count = 0;
+            for(int j = 0; j < data.size(); j++) {
                 if(data.get(j) == data.get(i)) {
-                    c++;
+                    count++;
+                }
+                if (count > maxCount) {
+                    maxCount = count; 
+                    mode = data.get(j);
                 }
             }
-            //counts.add(c);
+            if (maxCount < 2) {
+                return 0.0;
+            }
         }
-        return 0.0;
+        return mode;
     }
 }
 
